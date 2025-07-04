@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To Laras</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+      font-family: 'Times New Roman', Times, serif;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      flex-direction: column;
+    }
+    .container {
+      position: relative;
+      text-align: center;
+    }
+    .envelope {
+      width: 320px;
+      height: 200px;
+      background: #d94f70;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      border-radius: 8px;
+      transition: transform 0.6s ease;
+      perspective: 800px;
+    }
+    .flap {
+      width: 0;
+      height: 0;
+      border-left: 160px solid transparent;
+      border-right: 160px solid transparent;
+      border-top: 100px solid #e5738f;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: top center;
+      transition: transform 1s ease;
+      z-index: 2;
+      transform-style: preserve-3d;
+      transform: rotateX(0deg);
+    }
+    .flap.open {
+      transform: rotateX(-180deg);
+    }
+    .heart-icon {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 48px;
+      color: white;
+      transition: transform 0.5s ease;
+    }
+    .heart-icon.animate {
+      animation: pulse 0.6s infinite alternate;
+    }
+    @keyframes pulse {
+      from { transform: translate(-50%, -50%) scale(1); }
+      to { transform: translate(-50%, -50%) scale(1.2); }
+    }
+    .letter {
+      opacity: 0;
+      background: #fff;
+      padding: 30px 40px;
+      width: 600px;
+      height: 520px;
+      margin: 40px auto 0;
+      line-height: 1.6;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      animation: fadeIn 1s ease forwards;
+      animation-delay: 1.2s;
+      display: none;
+      border-radius: 12px;
+      overflow-y: auto;
+      text-align: justify;
+      font-weight: 600;
+      font-size: 18px;
+      font-family: 'Georgia', serif;
+      color: #4a2c2a;
+      letter-spacing: 0.03em;
+      user-select: text;
+      position: relative;
+    }
+    .letter.show {
+      display: block;
+      opacity: 1;
+    }
+    .letter h1 {
+      text-align: center;
+      color: #d94f70;
+      margin-bottom: 30px;
+      font-weight: 700;
+      font-size: 32px;
+      letter-spacing: 0.1em;
+    }
+    .signature {
+      margin-top: 60px;
+      text-align: right;
+      font-style: italic;
+      color: #6b4a4a;
+      font-weight: 500;
+      font-size: 16px;
+    }
+    .heart {
+      text-align: center;
+      font-size: 36px;
+      color: #d94f70;
+      margin-top: 20px;
+    }
+    .mochi {
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      margin-top: 5px;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(40px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    .confetti {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 10;
+    }
+    .confetti span {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #ff6f91;
+      animation: fall 3s linear infinite;
+      border-radius: 3px;
+    }
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0); opacity: 1; }
+      100% { transform: translateY(600px) rotate(720deg); opacity: 0; }
+    }
+    .back-btn {
+      display: inline-block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #d94f70;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .back-btn:hover {
+      background-color: #c13c5e;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="envelope" onclick="openLetter()">
+      <div class="flap" id="flap"></div>
+      <div class="heart-icon" id="heart">❤️</div>
+    </div>
+    <div class="letter" id="letter" tabindex="0">
+      <h1>Untuk Laras</h1>
+      <p>
+        Halooo, aku Kevin? Aldi? Valdi?<br />
+        Atau siapa aja yang kamu suka manggil aku—aku terima semua, asal dari kamu. 😊<br /><br />
+        Waktu pertama kali kita ketemu, aku cuma berharap bisa jadi temen aja.<br />
+        Tapi kenyataannya… hati malah jatuh duluan.<br />
+        Seiring hari-hari bareng kamu, semua berubah. Pelan-pelan tapi pasti, aku ngerasa kamu jadi tempat paling nyaman buat pulang (walau pulangnya cuma lewat chat atau suara di malam hari).<br /><br />
+        Kamu sering nanya, “Kenapa sih kamu suka aku?”<br />
+        Jawabannya masih sama dan akan tetap sama:<br />
+        Aku suka kamu waktu kamu senyum, waktu kamu ketawa, bahkan waktu kamu nangis dan ngerasa rapuh.<br />
+        Hal-hal random yang kamu lakukan, yang kadang kamu anggap aneh, justru itu yang bikin aku makin sayang.<br />
+        Aku suka kamu, bukan cuma saat kamu baik-baik aja, tapi juga saat kamu jadi versi paling jujur dari dirimu sendiri.<br /><br />
+        Aku tahu, kita baru deket 3 bulan lebih.<br />
+        Tapi rasanya… aku udah jatuh cinta. Beneran. Bukan yang sekadar kagum lewat layar.<br />
+        Mungkin bukan cinta yang langsung bikin kembang api di langit,<br />
+        tapi cinta yang pelan-pelan tumbuh kayak bunga liar—liar tapi indah.<br /><br />
+        Aku gak janji jadi yang paling sempurna,<br />
+        tapi aku janji jadi yang paling berusaha.<br /><br />
+        Jadi, kalau kamu tanya lagi kenapa aku suka kamu…<br />
+        Mungkin karena kamu adalah versi “rumah” yang paling nggak aku sangka, tapi paling buat aku nyaman.<br /><br />
+        Terima kasih udah hadir, Laras.<br />
+        Dan kalau boleh, aku pengen jadi alasan kamu senyum tiap hari—tanpa harus selalu cari alasan.
+      </p>
+      <div class="signature">
+        Dari aku sharkee,<br />
+      </div>
+      <div class="heart">❤️</div>
+      <div class="mochi"></div>
+
+      <!-- Tombol Back -->
+      <button class="back-btn" onclick="goBack()">⬅ Back</button>
+    </div>
+    <div class="confetti" id="confetti"></div>
+
+    <!-- Audio Musik -->
+    <audio id="bg-music" src="NIKI - Tsunami (Official Lyric Video) [KZG1PO9Crh8].mp3" preload="auto"></audio>
+  </div>
+
+  <script>
+    function openLetter() {
+      const flap = document.getElementById('flap');
+      const letter = document.getElementById('letter');
+      const heart = document.getElementById('heart');
+      const envelope = document.querySelector('.envelope');
+      const music = document.getElementById('bg-music');
+
+      flap.classList.add('open');
+      heart.classList.add('animate');
+
+      setTimeout(() => {
+        letter.classList.add('show');
+        envelope.style.display = 'none';
+        createConfetti();
+        letter.focus();
+        music.play(); // 🎵 Play music
+      }, 1000);
+    }
+
+    function createConfetti() {
+      const confetti = document.getElementById('confetti');
+      confetti.innerHTML = '';
+      for (let i = 0; i < 100; i++) {
+        const piece = document.createElement('span');
+        piece.style.left = Math.random() * 100 + '%';
+        piece.style.backgroundColor = i % 2 === 0 ? '#ffb6b9' : '#ff6f91';
+        piece.style.animationDelay = (Math.random() * 2) + 's';
+        confetti.appendChild(piece);
+      }
+    }
+
+    function goBack() {
+      const flap = document.getElementById('flap');
+      const letter = document.getElementById('letter');
+      const heart = document.getElementById('heart');
+      const envelope = document.querySelector('.envelope');
+      const confetti = document.getElementById('confetti');
+      const music = document.getElementById('bg-music');
+
+      flap.classList.remove('open');
+      heart.classList.remove('animate');
+      letter.classList.remove('show');
+      envelope.style.display = 'block';
+      confetti.innerHTML = '';
+      music.pause();
+      music.currentTime = 0; // Restart if opened again
+    }
+  </script>
+</body>
+</html>
